@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+read -rp "File to compile (e.g. main.c): " src
+read -rp "Name for the program: " out
+
+gcc -std=c11 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wformat=2 \
+    -Wstrict-prototypes -Wmissing-prototypes -Wcast-qual -Wnull-dereference \
+    -g -O1 -fsanitize=address,undefined -fno-omit-frame-pointer \
+    "$src" -o "$out" && echo "Built ./$out"
